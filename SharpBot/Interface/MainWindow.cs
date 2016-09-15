@@ -16,25 +16,11 @@ namespace SharpBot.Interface
             this.Icon = Properties.Resources.SharpBotIcon;
         }
 
+        #region GUI Methods
+
         private void listScriptsCommands_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
-            ColumnHeader ch = listScriptsCommands.Columns[e.ColumnIndex];
-            HorizontalAlignment colHal = ch.TextAlign;
-            HorizontalAlignment headHal = colHal;
-
-            headHal = HorizontalAlignment.Center;
-
-            SizeF size = e.Graphics.MeasureString(ch.Text, e.Font);
-
-            float x =
-                headHal == HorizontalAlignment.Center ? (e.Bounds.Width - size.Width) / 2f :
-                headHal == HorizontalAlignment.Right ? (e.Bounds.Width - size.Width) : 0f;
-
-            e.DrawBackground();
-
-            using (SolidBrush brush = new SolidBrush(e.ForeColor))
-                e.Graphics.DrawString(ch.Text, e.Font, brush,
-                                      e.Bounds.X + x, 5f, StringFormat.GenericDefault);
+           InterfaceMethods.DrawColumnHeader_DrawCenteredColumnHeader(sender, e);
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e) {
@@ -43,8 +29,24 @@ namespace SharpBot.Interface
 
         private void listScriptsCommands_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
-            e.NewWidth = this.listScriptsCommands.Columns[e.ColumnIndex].Width;
-            e.Cancel = true;
+           InterfaceMethods.ColumnWidthChanging_UnresizeableColumHeader(sender, e);
+        }
+
+        private void listScriptsCommands_DrawItem(object sender, DrawListViewItemEventArgs e)
+        {
+            e.DrawDefault = true;
+        }
+
+        private void listScriptsCommands_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        {
+                e.DrawDefault = true;
+        }
+
+        #endregion
+
+        private void newCommandToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

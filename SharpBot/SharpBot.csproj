@@ -41,6 +41,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,11 +53,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Botting\Command.cs" />
+    <Compile Include="Botting\MouseCommand.cs" />
+    <Compile Include="Input\Mouse.cs" />
+    <Compile Include="Interface\InterfaceMethods.cs" />
     <Compile Include="Interface\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Interface\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\MouseWatcher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\MouseWatcher.Designer.cs">
+      <DependentUpon>MouseWatcher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\NewCommand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\NewCommand.Designer.cs">
+      <DependentUpon>NewCommand.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\SplashScreen.cs">
       <SubType>Form</SubType>
@@ -64,10 +81,17 @@
     <Compile Include="Interface\SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program Interaction\WindowMethods.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Interface\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\MouseWatcher.resx">
+      <DependentUpon>MouseWatcher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\NewCommand.resx">
+      <DependentUpon>NewCommand.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -96,9 +120,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\sign_yes_smaller.png" />
+    <None Include="Resources\sign_no_smaller.png" />
+    <None Include="Resources\sign_yes_small.png" />
+    <None Include="Resources\sign_no_small.png" />
+    <None Include="Resources\sign_yes.png" />
+    <None Include="Resources\sign_no.png" />
     <None Include="Resources\sharpboticon.ico" />
     <Content Include="SharpBotIcon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
