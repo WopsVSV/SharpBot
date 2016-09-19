@@ -9,9 +9,17 @@ namespace SharpBot.Botting
     public class Command
     {
         public Type CommandType;
-        public int Delay;
+        public int Delay = 50;
 
-        public enum MouseCommandType
+        public enum MouseDelayType
+        {
+            None,
+            Random,
+            Partial,
+            Predefined
+        }
+
+        public enum MouseClickType
         {
             RightClick,
             LeftClick,
@@ -26,9 +34,8 @@ namespace SharpBot.Botting
             Window
         }
 
-        public Command(Type commandType, int delayMS)
+        public Command(Type commandType)
         {
-            Delay = delayMS;
             CommandType = commandType;
         }
     }

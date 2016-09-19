@@ -79,11 +79,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 78);
+            this.label3.Location = new System.Drawing.Point(29, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(162, 18);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Press F9 to save position.";
+            this.label3.Text = "Press F3 to save position.";
             // 
             // lstMousePositions
             // 
@@ -94,6 +94,11 @@
             this.lstMousePositions.Name = "lstMousePositions";
             this.lstMousePositions.Size = new System.Drawing.Size(168, 102);
             this.lstMousePositions.TabIndex = 5;
+            // 
+            // tmrUpdateMouse
+            // 
+            this.tmrUpdateMouse.Interval = 75;
+            this.tmrUpdateMouse.Tick += new System.EventHandler(this.tmrUpdateMouse_Tick);
             // 
             // MouseWatcher
             // 
@@ -108,13 +113,14 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MouseWatcher";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mouse Watcher";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MouseWatcher_FormClosing);
+            this.Load += new System.EventHandler(this.MouseWatcher_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

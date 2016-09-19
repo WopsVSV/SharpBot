@@ -6,6 +6,8 @@ namespace SharpBot.Interface
 {
     public partial class MainWindow : Form
     {
+        private MouseWatcher mouseWatcherForm;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -14,6 +16,7 @@ namespace SharpBot.Interface
         private void MainWindow_Load(object sender, EventArgs e)
         {
             this.Icon = Properties.Resources.SharpBotIcon;
+            mouseWatcherForm = new MouseWatcher();
         }
 
         #region GUI Methods
@@ -46,7 +49,14 @@ namespace SharpBot.Interface
 
         private void newCommandToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            NewCommand newCommandWindow = new NewCommand(this);
+            newCommandWindow.Show();
+        }
 
+        private void toolStripMenuItemOpenMouseWatcher_Click(object sender, EventArgs e)
+        {
+            mouseWatcherForm.Show();
+            mouseWatcherForm.Opacity = 1.0;
         }
     }
 }

@@ -148,6 +148,7 @@ namespace SharpBot.Interface
             this.toolStripMenuItemOpenMouseWatcher.Name = "toolStripMenuItemOpenMouseWatcher";
             this.toolStripMenuItemOpenMouseWatcher.Size = new System.Drawing.Size(189, 22);
             this.toolStripMenuItemOpenMouseWatcher.Text = "Open Mouse Watcher";
+            this.toolStripMenuItemOpenMouseWatcher.Click += new System.EventHandler(this.toolStripMenuItemOpenMouseWatcher_Click);
             // 
             // listScriptsCommands
             // 
