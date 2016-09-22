@@ -36,12 +36,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lstMousePositions = new System.Windows.Forms.ListBox();
             this.tmrUpdateMouse = new System.Windows.Forms.Timer(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 14);
+            this.label1.Location = new System.Drawing.Point(55, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 18);
             this.label1.TabIndex = 0;
@@ -50,7 +51,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 49);
+            this.label2.Location = new System.Drawing.Point(55, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(18, 18);
             this.label2.TabIndex = 1;
@@ -60,7 +61,7 @@
             // 
             this.lblX.AutoSize = true;
             this.lblX.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblX.Location = new System.Drawing.Point(52, 14);
+            this.lblX.Location = new System.Drawing.Point(84, 11);
             this.lblX.Name = "lblX";
             this.lblX.Size = new System.Drawing.Size(15, 18);
             this.lblX.TabIndex = 2;
@@ -70,7 +71,7 @@
             // 
             this.lblY.AutoSize = true;
             this.lblY.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblY.Location = new System.Drawing.Point(52, 49);
+            this.lblY.Location = new System.Drawing.Point(84, 46);
             this.lblY.Name = "lblY";
             this.lblY.Size = new System.Drawing.Size(15, 18);
             this.lblY.TabIndex = 3;
@@ -79,9 +80,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 78);
+            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(29, 80);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(162, 18);
+            this.label3.Size = new System.Drawing.Size(146, 15);
             this.label3.TabIndex = 4;
             this.label3.Text = "Press F3 to save position.";
             // 
@@ -90,21 +92,33 @@
             this.lstMousePositions.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstMousePositions.FormattingEnabled = true;
             this.lstMousePositions.ItemHeight = 14;
-            this.lstMousePositions.Location = new System.Drawing.Point(26, 106);
+            this.lstMousePositions.Location = new System.Drawing.Point(15, 139);
             this.lstMousePositions.Name = "lstMousePositions";
-            this.lstMousePositions.Size = new System.Drawing.Size(168, 102);
+            this.lstMousePositions.Size = new System.Drawing.Size(168, 116);
             this.lstMousePositions.TabIndex = 5;
+            this.lstMousePositions.DoubleClick += new System.EventHandler(this.lstMousePositions_DoubleClick);
             // 
             // tmrUpdateMouse
             // 
             this.tmrUpdateMouse.Interval = 75;
             this.tmrUpdateMouse.Tick += new System.EventHandler(this.tmrUpdateMouse_Tick);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(10, 111);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(180, 15);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Double-click to delete positions";
+            // 
             // MouseWatcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(217, 220);
+            this.ClientSize = new System.Drawing.Size(199, 267);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lstMousePositions);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblY);
@@ -135,5 +149,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox lstMousePositions;
         private System.Windows.Forms.Timer tmrUpdateMouse;
+        private System.Windows.Forms.Label label4;
     }
 }

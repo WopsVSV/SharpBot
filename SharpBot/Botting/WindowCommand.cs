@@ -38,6 +38,9 @@ namespace SharpBot.Botting
                 default:
                     break;
             }
+
+            Result = "Window brought to focus.";
+
             base.Execute();
         }
     }

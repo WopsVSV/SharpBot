@@ -69,6 +69,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtDelayUntilNextCommand = new System.Windows.Forms.TextBox();
             this.tmrHandleKey = new System.Windows.Forms.Timer(this.components);
+            this.chkPixelMoveAntiScript = new System.Windows.Forms.CheckBox();
             this.pnlMouseCommand.SuspendLayout();
             this.pnlMouseMoveType.SuspendLayout();
             this.pnlMouseClickType.SuspendLayout();
@@ -102,6 +103,7 @@
             // pnlMouseCommand
             // 
             this.pnlMouseCommand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMouseCommand.Controls.Add(this.chkPixelMoveAntiScript);
             this.pnlMouseCommand.Controls.Add(this.pnlMouseMoveType);
             this.pnlMouseCommand.Controls.Add(this.pnlMouseClickType);
             this.pnlMouseCommand.Controls.Add(this.label1);
@@ -254,7 +256,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 27);
+            this.label1.Location = new System.Drawing.Point(14, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 5;
@@ -269,7 +271,7 @@
             "Right Click",
             "Left Click",
             "Middle Click"});
-            this.cmb_mouseCommandType.Location = new System.Drawing.Point(70, 24);
+            this.cmb_mouseCommandType.Location = new System.Drawing.Point(70, 4);
             this.cmb_mouseCommandType.Name = "cmb_mouseCommandType";
             this.cmb_mouseCommandType.Size = new System.Drawing.Size(135, 21);
             this.cmb_mouseCommandType.TabIndex = 5;
@@ -302,7 +304,7 @@
             // txtKeyboardInputKey
             // 
             this.txtKeyboardInputKey.Enabled = false;
-            this.txtKeyboardInputKey.Location = new System.Drawing.Point(25, 175);
+            this.txtKeyboardInputKey.Location = new System.Drawing.Point(25, 127);
             this.txtKeyboardInputKey.Name = "txtKeyboardInputKey";
             this.txtKeyboardInputKey.ReadOnly = true;
             this.txtKeyboardInputKey.Size = new System.Drawing.Size(165, 20);
@@ -313,7 +315,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(22, 156);
+            this.label15.Location = new System.Drawing.Point(22, 111);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(28, 13);
             this.label15.TabIndex = 14;
@@ -321,7 +323,7 @@
             // 
             // txtKeyboardInputText
             // 
-            this.txtKeyboardInputText.Location = new System.Drawing.Point(25, 91);
+            this.txtKeyboardInputText.Location = new System.Drawing.Point(25, 50);
             this.txtKeyboardInputText.Multiline = true;
             this.txtKeyboardInputText.Name = "txtKeyboardInputText";
             this.txtKeyboardInputText.Size = new System.Drawing.Size(165, 50);
@@ -330,7 +332,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(22, 72);
+            this.label14.Location = new System.Drawing.Point(22, 31);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 13);
             this.label14.TabIndex = 12;
@@ -343,7 +345,7 @@
             this.cmb_InputType.Items.AddRange(new object[] {
             "Text",
             "Key"});
-            this.cmb_InputType.Location = new System.Drawing.Point(85, 24);
+            this.cmb_InputType.Location = new System.Drawing.Point(85, 3);
             this.cmb_InputType.Name = "cmb_InputType";
             this.cmb_InputType.Size = new System.Drawing.Size(105, 21);
             this.cmb_InputType.TabIndex = 10;
@@ -352,7 +354,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(22, 27);
+            this.label13.Location = new System.Drawing.Point(22, 6);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(57, 13);
             this.label13.TabIndex = 11;
@@ -376,7 +378,7 @@
             // 
             // txtWindowName
             // 
-            this.txtWindowName.Location = new System.Drawing.Point(110, 121);
+            this.txtWindowName.Location = new System.Drawing.Point(111, 107);
             this.txtWindowName.Name = "txtWindowName";
             this.txtWindowName.Size = new System.Drawing.Size(98, 20);
             this.txtWindowName.TabIndex = 18;
@@ -384,7 +386,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 124);
+            this.label12.Location = new System.Drawing.Point(11, 110);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(78, 13);
             this.label12.TabIndex = 17;
@@ -392,7 +394,7 @@
             // 
             // txtProcessID
             // 
-            this.txtProcessID.Location = new System.Drawing.Point(110, 95);
+            this.txtProcessID.Location = new System.Drawing.Point(111, 69);
             this.txtProcessID.Name = "txtProcessID";
             this.txtProcessID.Size = new System.Drawing.Size(98, 20);
             this.txtProcessID.TabIndex = 16;
@@ -405,7 +407,7 @@
             "Process name",
             "Process ID",
             "Window name"});
-            this.cmb_DetectionType.Location = new System.Drawing.Point(89, 24);
+            this.cmb_DetectionType.Location = new System.Drawing.Point(89, 3);
             this.cmb_DetectionType.Name = "cmb_DetectionType";
             this.cmb_DetectionType.Size = new System.Drawing.Size(120, 21);
             this.cmb_DetectionType.TabIndex = 8;
@@ -414,7 +416,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 98);
+            this.label10.Location = new System.Drawing.Point(11, 72);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 13);
             this.label10.TabIndex = 15;
@@ -423,7 +425,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(10, 27);
+            this.label9.Location = new System.Drawing.Point(10, 6);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(79, 13);
             this.label9.TabIndex = 9;
@@ -431,7 +433,7 @@
             // 
             // txtProcessName
             // 
-            this.txtProcessName.Location = new System.Drawing.Point(109, 69);
+            this.txtProcessName.Location = new System.Drawing.Point(110, 32);
             this.txtProcessName.Name = "txtProcessName";
             this.txtProcessName.Size = new System.Drawing.Size(99, 20);
             this.txtProcessName.TabIndex = 14;
@@ -439,7 +441,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 72);
+            this.label11.Location = new System.Drawing.Point(10, 35);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(77, 13);
             this.label11.TabIndex = 13;
@@ -466,6 +468,16 @@
             // tmrHandleKey
             // 
             this.tmrHandleKey.Tick += new System.EventHandler(this.tmrHandleKey_Tick);
+            // 
+            // chkPixelMoveAntiScript
+            // 
+            this.chkPixelMoveAntiScript.AutoSize = true;
+            this.chkPixelMoveAntiScript.Location = new System.Drawing.Point(17, 31);
+            this.chkPixelMoveAntiScript.Name = "chkPixelMoveAntiScript";
+            this.chkPixelMoveAntiScript.Size = new System.Drawing.Size(125, 17);
+            this.chkPixelMoveAntiScript.TabIndex = 19;
+            this.chkPixelMoveAntiScript.Text = "Pixel move anti-script";
+            this.chkPixelMoveAntiScript.UseVisualStyleBackColor = true;
             // 
             // NewCommand
             // 
@@ -546,5 +558,6 @@
         private System.Windows.Forms.ComboBox cmb_InputType;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Timer tmrHandleKey;
+        private System.Windows.Forms.CheckBox chkPixelMoveAntiScript;
     }
 }

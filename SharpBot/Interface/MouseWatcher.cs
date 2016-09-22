@@ -36,6 +36,12 @@ namespace SharpBot.Interface
             tmrUpdateMouse.Start();
         }
 
+        private void lstMousePositions_DoubleClick(object sender, EventArgs e)
+        {
+            if(lstMousePositions.SelectedItem != null)
+                lstMousePositions.Items.Remove(lstMousePositions.SelectedItem);
+        }
+
         private void tmrUpdateMouse_Tick(object sender, EventArgs e)
         {
             if (Opacity > 0.9)
