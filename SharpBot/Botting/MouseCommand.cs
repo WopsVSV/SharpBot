@@ -13,23 +13,24 @@ namespace SharpBot.Botting
 
         public MouseClickType ClickType;
         public MouseDelayType DelayType;
+        public Mouse.MouseEventFlags MouseFlag = Mouse.MouseEventFlags.LeftDown;
 
         public int DelayMin, DelayMax, DelayTime, MouseX, MouseY;
         public bool PixelMoveAntiScript = true;
         
         public MouseCommand() : base(Type.Mouse) { }
-
-        public void Execute(Mouse.MouseEventFlags type)
+  
+        public override void Execute()
         {
             // Execute the click if it is not a mouse movement
-            if (type == Mouse.MouseEventFlags.Move)
+            if (MouseFlag == Mouse.MouseEventFlags.Move)
             {
                 Mouse.MoveMouse(MouseX, MouseY, 0, 0);
                 return;
             }
             
             // If it's not a mouse movement, execute the mouse down event
-            Mouse.MouseEvent(type);
+            Mouse.MouseEvent(MouseFlag);
 
             // Calculate and efectuate delay
             int delayTime;
@@ -66,6 +67,10 @@ namespace SharpBot.Botting
                     Mouse.MouseEvent(Mouse.MouseEventFlags.RightUp);
                     break;
             }
+
+            Result = "Completed succesfully";
+
+            base.Execute();
         }
     }
 }

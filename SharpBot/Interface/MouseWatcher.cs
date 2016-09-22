@@ -8,10 +8,11 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SharpBot.Input;
 
 namespace SharpBot.Interface
 {
-    public partial class MouseWatcher : Form, IMessageFilter
+    public partial class MouseWatcher : Form
     {
         private int mouseX, mouseY;
 
@@ -32,7 +33,6 @@ namespace SharpBot.Interface
 
         private void MouseWatcher_Load(object sender, EventArgs e)
         {
-            Application.AddMessageFilter(this);
             tmrUpdateMouse.Start();
         }
 
@@ -44,35 +44,10 @@ namespace SharpBot.Interface
                 mouseY = Cursor.Position.Y;
                 lblX.Text = mouseX.ToString();
                 lblY.Text = mouseY.ToString();
-            }          
-        }
-
-        private const int WM_KEYDOWN = 0x100;
-        private const int WM_KEYUP = 0x101;
-        private bool KeyDepressed = false;
-
-        public bool PreFilterMessage(ref Message m)
-        {
-            switch (m.Msg)
-            {
-                case WM_KEYDOWN:
-                    if ((Keys)m.WParam == Keys.F3)
-                    {
-                        KeyDepressed = true;
-                        if(Opacity > 0.9)
-                            lstMousePositions.Items.Add(mouseX + " , " + mouseY);
-                    }
-                    break;
-
-                case WM_KEYUP:
-                    if ((Keys)m.WParam == Keys.F3)
-                    {
-                        KeyDepressed = false;
-                    }
-                    break;
             }
-
-            return false;
+            if(Keyboard.IsKeyDown(Keys.F3))
+                if (Opacity > 0.9)
+                    lstMousePositions.Items.Add(mouseX + " , " + mouseY);
         }
 
     }

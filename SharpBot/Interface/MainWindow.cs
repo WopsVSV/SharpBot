@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using SharpBot.Program_Interaction;
 
 namespace SharpBot.Interface
 {
@@ -57,6 +58,11 @@ namespace SharpBot.Interface
         {
             mouseWatcherForm.Show();
             mouseWatcherForm.Opacity = 1.0;
+        }
+
+        private void dsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

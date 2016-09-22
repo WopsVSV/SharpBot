@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SharpBot.Input;
 
 namespace SharpBot.Interface
 {
     public partial class NewCommand : Form
     {
         private MainWindow mainWindow;
+        private Keys currentKey = Keys.None;
 
         public NewCommand(MainWindow _mainWindow)
         {
@@ -26,22 +28,23 @@ namespace SharpBot.Interface
             cmb_mouseCommandType.SelectedIndex = 1;
             cmb_DelayType.SelectedIndex = 0;
             cmb_DetectionType.SelectedIndex = 0;
+            cmb_InputType.SelectedIndex = 0;
 
             pnlMouseMoveType.Location = new Point(3, 51);
 
             pnlKeyboardCommand.Location = new Point(25, 62);
             pnlWindowCommand.Location = new Point(25, 62);
-            this.Size = new Size(284, 385);
+            Size = new Size(284, 385);
         }
 
         private void cmb_commandType_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (Control p in Controls)
             {
-                if(p is Panel)
+                if (p is Panel)
                     p.Visible = false;
             }
-                
+
             switch (cmb_commandType.SelectedIndex)
             {
                 case 0:
@@ -123,6 +126,53 @@ namespace SharpBot.Interface
                 txtProcessID.Enabled = false;
                 txtWindowName.Enabled = true;
             }
+        }
+
+        private void cmb_InputType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmb_InputType.SelectedIndex == 0)
+            {
+                txtKeyboardInputText.Enabled = true;
+                txtKeyboardInputKey.Enabled = false;
+                tmrHandleKey.Stop();
+            }
+            else if (cmb_InputType.SelectedIndex == 1)
+            {
+                txtKeyboardInputText.Enabled = false;
+                txtKeyboardInputKey.Enabled = true;
+                tmrHandleKey.Start();
+            }
+        }
+
+        private void tmrHandleKey_Tick(object sender, EventArgs e)
+        {
+            Keys checkedKey = IsAnyKeyDown();
+            if (checkedKey != Keys.None)
+            {
+                currentKey = checkedKey;
+                txtKeyboardInputKey.Text = currentKey.ToString();
+            }
+        }
+
+        private static Keys[] UNALLOWED_KEYS =
+        {
+            Keys.LButton,
+            Keys.RButton,
+            Keys.MButton,
+            Keys.XButton1,
+            Keys.XButton2,
+            Keys.F9
+        };
+
+
+        public static Keys IsAnyKeyDown()
+        {
+            foreach (Keys key in Enum.GetValues(typeof (Keys)))
+            {
+                if (Keyboard.IsKeyDown(key) && !UNALLOWED_KEYS.Any(p => p == key))
+                    return key;
+            }
+            return Keys.None;
         }
     }
 }

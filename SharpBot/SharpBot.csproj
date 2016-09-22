@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Botting\Command.cs" />
     <Compile Include="Botting\MouseCommand.cs" />
+    <Compile Include="Botting\WindowCommand.cs" />
+    <Compile Include="Input\Keyboard.cs" />
     <Compile Include="Input\Mouse.cs" />
     <Compile Include="Interface\InterfaceMethods.cs" />
     <Compile Include="Interface\MainWindow.cs">

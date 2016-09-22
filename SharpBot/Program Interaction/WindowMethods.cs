@@ -14,6 +14,9 @@ namespace SharpBot.Program_Interaction
 
         private const int SW_SHOWNORMAL = 1;
 
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint processId);
+
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         private static extern bool ShowWindow(IntPtr hwnd, int nCmdShow);
 
@@ -22,7 +25,7 @@ namespace SharpBot.Program_Interaction
 
         #endregion
 
-        public static bool SetForeground(string name)
+        public static bool SetForegroundByName(string name)
         {
             Process[] processes = Process.GetProcessesByName(name);
 
@@ -34,6 +37,42 @@ namespace SharpBot.Program_Interaction
             }
 
             return false;
+        }
+
+        public static bool SetForegroundByProcessID(int id)
+        {
+            Process p = Process.GetProcessById(id);
+
+            try
+            {
+                ShowWindow(p.MainWindowHandle, SW_SHOWNORMAL);
+                SetForegroundWindow(p.MainWindowHandle);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool SetForegroundByWindowTitle(string name)
+        {
+            IntPtr hWnd = IntPtr.Zero;
+            foreach (Process pList in Process.GetProcesses())
+            {
+                if (pList.MainWindowTitle.Contains(name))
+                {
+                    hWnd = pList.MainWindowHandle;
+                }
+            }
+            if (hWnd == IntPtr.Zero)
+                return false;
+            uint id;
+            int pid;
+            GetWindowThreadProcessId(hWnd,out id);
+            pid = (int) id;
+            
+            return SetForegroundByProcessID(pid);
         }
 
     }
