@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen));
             this.pnlBackgroundImage = new System.Windows.Forms.Panel();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.tmrLoad = new System.Windows.Forms.Timer(this.components);
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.tmrLoad = new System.Windows.Forms.Timer(this.components);
             this.pnlBackgroundImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
@@ -60,12 +60,6 @@
             this.lblStatus.TabIndex = 1;
             this.lblStatus.Text = "Empty";
             // 
-            // tmrLoad
-            // 
-            this.tmrLoad.Enabled = true;
-            this.tmrLoad.Interval = 250;
-            this.tmrLoad.Tick += new System.EventHandler(this.tmrLoad_Tick);
-            // 
             // pbLogo
             // 
             this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
@@ -74,6 +68,12 @@
             this.pbLogo.Size = new System.Drawing.Size(661, 186);
             this.pbLogo.TabIndex = 2;
             this.pbLogo.TabStop = false;
+            // 
+            // tmrLoad
+            // 
+            this.tmrLoad.Enabled = true;
+            this.tmrLoad.Interval = 250;
+            this.tmrLoad.Tick += new System.EventHandler(this.tmrLoad_Tick);
             // 
             // SplashScreen
             // 
@@ -85,6 +85,7 @@
             this.Controls.Add(this.pnlBackgroundImage);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SplashScreen";

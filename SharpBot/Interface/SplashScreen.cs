@@ -5,7 +5,7 @@ namespace SharpBot.Interface
 {
     public partial class SplashScreen : Form
     {
-        private const int SPLASH_TIME = 500; // Time the splash screen will appear for
+        private const int SPLASH_TIME = 1000; // Time the splash screen will appear for
         private const string STATUS_MESSAGE = "Preparing your environment..."; // The status that will be shown to the user
         private int timeElapsed;
         

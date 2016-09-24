@@ -32,6 +32,7 @@
             this.cmb_commandType = new System.Windows.Forms.ComboBox();
             this.deco_1 = new System.Windows.Forms.Label();
             this.pnlMouseCommand = new System.Windows.Forms.Panel();
+            this.chkPixelMoveAntiScript = new System.Windows.Forms.CheckBox();
             this.pnlMouseMoveType = new System.Windows.Forms.Panel();
             this.btnImportFromWatcher = new System.Windows.Forms.Button();
             this.txtMouseY = new System.Windows.Forms.TextBox();
@@ -69,7 +70,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtDelayUntilNextCommand = new System.Windows.Forms.TextBox();
             this.tmrHandleKey = new System.Windows.Forms.Timer(this.components);
-            this.chkPixelMoveAntiScript = new System.Windows.Forms.CheckBox();
             this.pnlMouseCommand.SuspendLayout();
             this.pnlMouseMoveType.SuspendLayout();
             this.pnlMouseClickType.SuspendLayout();
@@ -113,6 +113,16 @@
             this.pnlMouseCommand.Size = new System.Drawing.Size(222, 230);
             this.pnlMouseCommand.TabIndex = 2;
             // 
+            // chkPixelMoveAntiScript
+            // 
+            this.chkPixelMoveAntiScript.AutoSize = true;
+            this.chkPixelMoveAntiScript.Location = new System.Drawing.Point(17, 33);
+            this.chkPixelMoveAntiScript.Name = "chkPixelMoveAntiScript";
+            this.chkPixelMoveAntiScript.Size = new System.Drawing.Size(125, 17);
+            this.chkPixelMoveAntiScript.TabIndex = 19;
+            this.chkPixelMoveAntiScript.Text = "Pixel move anti-script";
+            this.chkPixelMoveAntiScript.UseVisualStyleBackColor = true;
+            // 
             // pnlMouseMoveType
             // 
             this.pnlMouseMoveType.Controls.Add(this.btnImportFromWatcher);
@@ -133,6 +143,7 @@
             this.btnImportFromWatcher.TabIndex = 15;
             this.btnImportFromWatcher.Text = "Import from Mouse Watcher";
             this.btnImportFromWatcher.UseVisualStyleBackColor = true;
+            this.btnImportFromWatcher.Click += new System.EventHandler(this.btnImportFromWatcher_Click);
             // 
             // txtMouseY
             // 
@@ -469,16 +480,6 @@
             // 
             this.tmrHandleKey.Tick += new System.EventHandler(this.tmrHandleKey_Tick);
             // 
-            // chkPixelMoveAntiScript
-            // 
-            this.chkPixelMoveAntiScript.AutoSize = true;
-            this.chkPixelMoveAntiScript.Location = new System.Drawing.Point(17, 31);
-            this.chkPixelMoveAntiScript.Name = "chkPixelMoveAntiScript";
-            this.chkPixelMoveAntiScript.Size = new System.Drawing.Size(125, 17);
-            this.chkPixelMoveAntiScript.TabIndex = 19;
-            this.chkPixelMoveAntiScript.Text = "Pixel move anti-script";
-            this.chkPixelMoveAntiScript.UseVisualStyleBackColor = true;
-            // 
             // NewCommand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,7 +498,6 @@
             this.MinimizeBox = false;
             this.Name = "NewCommand";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Command";
             this.Load += new System.EventHandler(this.NewCommand_Load);
@@ -517,17 +517,13 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cmb_commandType;
         private System.Windows.Forms.Label deco_1;
         private System.Windows.Forms.Panel pnlMouseCommand;
         private System.Windows.Forms.Button btnCreateCommand;
         private System.Windows.Forms.Panel pnlKeyboardCommand;
         private System.Windows.Forms.Panel pnlWindowCommand;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmb_mouseCommandType;
         private System.Windows.Forms.Panel pnlMouseClickType;
-        private System.Windows.Forms.ComboBox cmb_DelayType;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtRandomDelayMax;
         private System.Windows.Forms.Label label5;
@@ -539,10 +535,8 @@
         private System.Windows.Forms.TextBox txtDelayUntilNextCommand;
         private System.Windows.Forms.Panel pnlMouseMoveType;
         private System.Windows.Forms.Button btnImportFromWatcher;
-        private System.Windows.Forms.TextBox txtMouseY;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtMouseX;
         private System.Windows.Forms.TextBox txtWindowName;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtProcessID;
@@ -559,5 +553,10 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Timer tmrHandleKey;
         private System.Windows.Forms.CheckBox chkPixelMoveAntiScript;
+        public System.Windows.Forms.ComboBox cmb_commandType;
+        public System.Windows.Forms.ComboBox cmb_mouseCommandType;
+        private System.Windows.Forms.ComboBox cmb_DelayType;
+        public System.Windows.Forms.TextBox txtMouseY;
+        public System.Windows.Forms.TextBox txtMouseX;
     }
 }

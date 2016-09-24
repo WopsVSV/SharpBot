@@ -82,6 +82,9 @@ namespace SharpBot.Botting
                     break;
             }
 
+            if (PixelMoveAntiScript)
+                Mouse.MoveMouse(Mouse.GetCursorPosition().X + random.Next(-1, 2), Mouse.GetCursorPosition().Y + random.Next(-1, 2), 0, 0);
+
             Result = "Completed succesfully";
 
             base.Execute();

@@ -40,7 +40,7 @@ namespace SharpBot.Interface
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scriptToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopF9ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOpenMouseWatcher = new System.Windows.Forms.ToolStripMenuItem();
             this.dsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,6 +56,7 @@ namespace SharpBot.Interface
             this.modifyCommandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tmrKeyHandling = new System.Windows.Forms.Timer(this.components);
             this.mainMenuStrip.SuspendLayout();
             this.scriptSelectionMenuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -69,7 +70,7 @@ namespace SharpBot.Interface
             this.settingsToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(830, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(604, 24);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -118,7 +119,7 @@ namespace SharpBot.Interface
             // 
             this.scriptToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.startToolStripMenuItem,
-            this.stopF9ToolStripMenuItem});
+            this.stopToolStripMenuItem});
             this.scriptToolStripMenuItem1.Name = "scriptToolStripMenuItem1";
             this.scriptToolStripMenuItem1.Size = new System.Drawing.Size(49, 20);
             this.scriptToolStripMenuItem1.Text = "Script";
@@ -130,12 +131,13 @@ namespace SharpBot.Interface
             this.startToolStripMenuItem.Text = "Start (F9)";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
-            // stopF9ToolStripMenuItem
+            // stopToolStripMenuItem
             // 
-            this.stopF9ToolStripMenuItem.Enabled = false;
-            this.stopF9ToolStripMenuItem.Name = "stopF9ToolStripMenuItem";
-            this.stopF9ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.stopF9ToolStripMenuItem.Text = "Stop (F9)";
+            this.stopToolStripMenuItem.Enabled = false;
+            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stopToolStripMenuItem.Text = "Stop (F9)";
+            this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -178,7 +180,7 @@ namespace SharpBot.Interface
             this.listScriptsCommands.Location = new System.Drawing.Point(0, 24);
             this.listScriptsCommands.Name = "listScriptsCommands";
             this.listScriptsCommands.OwnerDraw = true;
-            this.listScriptsCommands.Size = new System.Drawing.Size(830, 473);
+            this.listScriptsCommands.Size = new System.Drawing.Size(604, 402);
             this.listScriptsCommands.TabIndex = 1;
             this.listScriptsCommands.UseCompatibleStateImageBehavior = false;
             this.listScriptsCommands.View = System.Windows.Forms.View.Details;
@@ -218,7 +220,7 @@ namespace SharpBot.Interface
             this.deleteCommandToolStripMenuItem,
             this.modifyCommandToolStripMenuItem});
             this.scriptSelectionMenuStrip.Name = "contextMenuStrip1";
-            this.scriptSelectionMenuStrip.Size = new System.Drawing.Size(153, 92);
+            this.scriptSelectionMenuStrip.Size = new System.Drawing.Size(113, 70);
             // 
             // newCommandToolStripMenuItem
             // 
@@ -230,7 +232,7 @@ namespace SharpBot.Interface
             // deleteCommandToolStripMenuItem
             // 
             this.deleteCommandToolStripMenuItem.Name = "deleteCommandToolStripMenuItem";
-            this.deleteCommandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteCommandToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.deleteCommandToolStripMenuItem.Text = "Delete";
             this.deleteCommandToolStripMenuItem.Click += new System.EventHandler(this.deleteCommandToolStripMenuItem_Click);
             // 
@@ -244,9 +246,9 @@ namespace SharpBot.Interface
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 475);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 404);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(830, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(604, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -256,11 +258,16 @@ namespace SharpBot.Interface
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(103, 17);
             this.toolStripStatusLabel1.Text = "No script running.";
             // 
+            // tmrKeyHandling
+            // 
+            this.tmrKeyHandling.Enabled = true;
+            this.tmrKeyHandling.Tick += new System.EventHandler(this.tmrKeyHandling_Tick);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(830, 497);
+            this.ClientSize = new System.Drawing.Size(604, 426);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.listScriptsCommands);
             this.Controls.Add(this.mainMenuStrip);
@@ -294,7 +301,7 @@ namespace SharpBot.Interface
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scriptToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stopF9ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader ch_actionType;
         private System.Windows.Forms.ColumnHeader ch_index;
         private System.Windows.Forms.ColumnHeader ch_Instructions;
@@ -309,5 +316,6 @@ namespace SharpBot.Interface
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenMouseWatcher;
         private System.Windows.Forms.ToolStripMenuItem dsToolStripMenuItem;
         public System.Windows.Forms.ListView listScriptsCommands;
+        private System.Windows.Forms.Timer tmrKeyHandling;
     }
 }

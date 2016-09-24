@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -40,6 +41,35 @@ namespace SharpBot.Interface
         {
             if(lstMousePositions.SelectedItem != null)
                 lstMousePositions.Items.Remove(lstMousePositions.SelectedItem);
+        }
+
+        private void lstMousePositions_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void lstMousePositions_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && lstMousePositions.SelectedItem != null)
+            {
+                Form fc = Application.OpenForms["NewCommand"];
+
+                if (fc == null)
+                    return;
+
+                NewCommand f = fc as NewCommand;
+                if (f.cmb_commandType.SelectedIndex == 0 && f.cmb_mouseCommandType.SelectedIndex == 0)
+                {
+                    var sPositions = lstMousePositions.SelectedItem.ToString().Replace(" ", string.Empty).Split(',');
+
+                    if (sPositions.Length != 2)
+                        throw new InvalidDataException();
+
+                    f.txtMouseX.Text = sPositions[0];
+                    f.txtMouseY.Text = sPositions[1];
+
+                }
+            }
         }
 
         private void tmrUpdateMouse_Tick(object sender, EventArgs e)

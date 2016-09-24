@@ -37,6 +37,7 @@
             this.lstMousePositions = new System.Windows.Forms.ListBox();
             this.tmrUpdateMouse = new System.Windows.Forms.Timer(this.components);
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -81,22 +82,24 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(29, 80);
+            this.label3.Location = new System.Drawing.Point(29, 77);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 15);
+            this.label3.Size = new System.Drawing.Size(143, 15);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Press F3 to save position.";
+            this.label3.Text = "Press F3 to save position";
             // 
             // lstMousePositions
             // 
             this.lstMousePositions.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstMousePositions.FormattingEnabled = true;
             this.lstMousePositions.ItemHeight = 14;
-            this.lstMousePositions.Location = new System.Drawing.Point(15, 139);
+            this.lstMousePositions.Location = new System.Drawing.Point(16, 142);
             this.lstMousePositions.Name = "lstMousePositions";
             this.lstMousePositions.Size = new System.Drawing.Size(168, 116);
             this.lstMousePositions.TabIndex = 5;
+            this.lstMousePositions.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstMousePositions_MouseClick);
             this.lstMousePositions.DoubleClick += new System.EventHandler(this.lstMousePositions_DoubleClick);
+            this.lstMousePositions.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstMousePositions_MouseDown);
             // 
             // tmrUpdateMouse
             // 
@@ -107,17 +110,28 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(10, 111);
+            this.label4.Location = new System.Drawing.Point(13, 98);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(180, 15);
+            this.label4.Size = new System.Drawing.Size(174, 15);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Double-click to delete positions";
+            this.label4.Text = "Double-click to delete position";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(19, 118);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(165, 15);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Right-click to export position";
             // 
             // MouseWatcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(199, 267);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lstMousePositions);
             this.Controls.Add(this.label3);
@@ -147,8 +161,9 @@
         private System.Windows.Forms.Label lblX;
         private System.Windows.Forms.Label lblY;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox lstMousePositions;
         private System.Windows.Forms.Timer tmrUpdateMouse;
         private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.ListBox lstMousePositions;
+        private System.Windows.Forms.Label label5;
     }
 }

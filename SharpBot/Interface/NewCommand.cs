@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using WindowsInput;
@@ -13,11 +14,13 @@ namespace SharpBot.Interface
     public partial class NewCommand : Form
     {
         private readonly MainWindow mainWindow;
+        private readonly MouseWatcher mouseWatcher;
         public VirtualKeyCode currentKey = VirtualKeyCode.NONAME;
 
-        public NewCommand(MainWindow _mainWindow)
+        public NewCommand(MainWindow _mainWindow, MouseWatcher _mouseWatcher)
         {
             mainWindow = _mainWindow;
+            mouseWatcher = _mouseWatcher;
             InitializeComponent();
         }
 
@@ -100,7 +103,7 @@ namespace SharpBot.Interface
             MouseCommand command = new MouseCommand();
 
             command.CommandType = Type.Mouse;
-            
+
             MouseClickType clickType = MouseClickType.LeftClick;
             switch (cmb_mouseCommandType.SelectedIndex)
             {
@@ -368,5 +371,21 @@ namespace SharpBot.Interface
         }
         #endregion
 
+        private void btnImportFromWatcher_Click(object sender, EventArgs e)
+        {
+            if (mouseWatcher.Opacity < 0.9 || mouseWatcher.lstMousePositions.SelectedItem == null)
+            {
+                MessageBox.Show("No position selected or mouse watcher is not open.");
+                return;
+            }
+
+            var sPositions =  mouseWatcher.lstMousePositions.SelectedItem.ToString().Replace(" ", string.Empty).Split(',');
+            
+            if(sPositions.Length != 2)
+                throw new InvalidDataException();
+
+            txtMouseX.Text = sPositions[0];
+            txtMouseY.Text = sPositions[1];
+        }
     }
 }
