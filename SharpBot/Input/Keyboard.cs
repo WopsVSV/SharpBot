@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsInput;
 
 namespace SharpBot.Input
 {
@@ -48,5 +49,28 @@ namespace SharpBot.Input
         {
             return KeyStates.Toggled == (GetKeyState(key) & KeyStates.Toggled);
         }
+
+        private static readonly VirtualKeyCode[] UNALLOWED_KEYS =
+        {
+            VirtualKeyCode.LBUTTON,
+            VirtualKeyCode.RBUTTON,
+            VirtualKeyCode.MBUTTON,
+            VirtualKeyCode.XBUTTON1,
+            VirtualKeyCode.XBUTTON2,
+            VirtualKeyCode.F9
+        };
+
+
+
+        public static VirtualKeyCode IsAnyKeyDown()
+        {
+            foreach (VirtualKeyCode key in Enum.GetValues(typeof(VirtualKeyCode)))
+            {
+                if (InputSimulator.IsKeyDown(key) && !UNALLOWED_KEYS.Any(p => p == key))
+                    return key;
+            }
+            return VirtualKeyCode.NONAME;
+        }
+
     }
 }

@@ -23,12 +23,26 @@ namespace SharpBot.Botting
         public override void Execute()
         {
             // Execute the click if it is not a mouse movement
-            if (MouseFlag == Mouse.MouseEventFlags.Move)
+            if (ClickType == MouseClickType.Move)
             {
                 Mouse.MoveMouse(MouseX, MouseY, 0, 0);
                 return;
             }
-            
+
+            // Convert ClickType into MouseFlag
+            switch (ClickType)
+            {
+                case MouseClickType.LeftClick:
+                    MouseFlag = Mouse.MouseEventFlags.LeftDown;
+                    break;
+                case MouseClickType.RightClick:
+                    MouseFlag = Mouse.MouseEventFlags.RightDown;
+                    break;
+                case MouseClickType.MiddleClick:
+                    MouseFlag = Mouse.MouseEventFlags.MiddleDown;
+                    break;
+            }
+
             // If it's not a mouse movement, execute the mouse down event
             Mouse.MouseEvent(MouseFlag);
 

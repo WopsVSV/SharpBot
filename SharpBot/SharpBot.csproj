@@ -63,6 +63,7 @@
     <Compile Include="Botting\WindowCommand.cs" />
     <Compile Include="Input\Keyboard.cs" />
     <Compile Include="Input\Mouse.cs" />
+    <Compile Include="Interface\CommandDescription.cs" />
     <Compile Include="Interface\InterfaceMethods.cs" />
     <Compile Include="Interface\MainWindow.cs">
       <SubType>Form</SubType>
@@ -88,7 +89,8 @@
     <Compile Include="Interface\SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program Interaction\WindowMethods.cs" />
+    <Compile Include="Utility\CalculationMethods.cs" />
+    <Compile Include="Utility\WindowMethods.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Interface\MainWindow.resx">

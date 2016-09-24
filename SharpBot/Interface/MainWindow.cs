@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using SharpBot.Program_Interaction;
+using SharpBot.Botting;
+using SharpBot.Utility;
 
 namespace SharpBot.Interface
 {
@@ -16,6 +17,7 @@ namespace SharpBot.Interface
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            this.MinimumSize = new Size(520,300);
             this.Icon = Properties.Resources.SharpBotIcon;
             mouseWatcherForm = new MouseWatcher();
         }
@@ -63,6 +65,40 @@ namespace SharpBot.Interface
         private void dsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listScriptsCommands.Items)
+            {
+                Command comm = item.Tag as Command;
+                if (comm != null)
+                {
+                    comm.Execute();
+                    item.SubItems[4].Text = "True";
+                    int sleepTime = int.Parse(item.SubItems[3].Text);
+                    System.Threading.Thread.Sleep(sleepTime);
+                }
+            }
+        }
+
+        private void deleteCommandToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listScriptsCommands.SelectedItems.Count == 1 && listScriptsCommands.SelectedItems[0] != null)
+            {
+                listScriptsCommands.Items.Remove(listScriptsCommands.SelectedItems[0]);
+                RecalculateIndexes();
+            }
+        }
+
+        private void RecalculateIndexes()
+        {
+            int index = 0;
+            foreach (ListViewItem item in listScriptsCommands.Items)
+            {
+                item.SubItems[0].Text = index.ToString();
+                index++;
+            }
         }
     }
 }

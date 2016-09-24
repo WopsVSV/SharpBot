@@ -126,14 +126,15 @@ namespace SharpBot.Interface
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.startToolStripMenuItem.Text = "Start (F9)";
+            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
             // stopF9ToolStripMenuItem
             // 
             this.stopF9ToolStripMenuItem.Enabled = false;
             this.stopF9ToolStripMenuItem.Name = "stopF9ToolStripMenuItem";
-            this.stopF9ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.stopF9ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.stopF9ToolStripMenuItem.Text = "Stop (F9)";
             // 
             // settingsToolStripMenuItem
@@ -199,7 +200,7 @@ namespace SharpBot.Interface
             // ch_Instructions
             // 
             this.ch_Instructions.Text = "Instructions";
-            this.ch_Instructions.Width = 174;
+            this.ch_Instructions.Width = 231;
             // 
             // ch_delayToNext
             // 
@@ -217,7 +218,7 @@ namespace SharpBot.Interface
             this.deleteCommandToolStripMenuItem,
             this.modifyCommandToolStripMenuItem});
             this.scriptSelectionMenuStrip.Name = "contextMenuStrip1";
-            this.scriptSelectionMenuStrip.Size = new System.Drawing.Size(113, 70);
+            this.scriptSelectionMenuStrip.Size = new System.Drawing.Size(153, 92);
             // 
             // newCommandToolStripMenuItem
             // 
@@ -229,8 +230,9 @@ namespace SharpBot.Interface
             // deleteCommandToolStripMenuItem
             // 
             this.deleteCommandToolStripMenuItem.Name = "deleteCommandToolStripMenuItem";
-            this.deleteCommandToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.deleteCommandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteCommandToolStripMenuItem.Text = "Delete";
+            this.deleteCommandToolStripMenuItem.Click += new System.EventHandler(this.deleteCommandToolStripMenuItem_Click);
             // 
             // modifyCommandToolStripMenuItem
             // 
