@@ -16,7 +16,7 @@ namespace SharpBot.Interface
         private Thread executionThread;
 
         public MainWindow()
-        {
+        { 
             InitializeComponent();
         }
 
@@ -25,6 +25,12 @@ namespace SharpBot.Interface
             this.MinimumSize = new Size(520,300);
             this.Icon = Properties.Resources.SharpBotIcon;
             mouseWatcherForm = new MouseWatcher();
+
+            listScriptsCommands.DragDropFinish += delegate
+            {
+                RecalculateIndexes();
+            };
+
         }
 
         #region GUI Methods
@@ -67,10 +73,6 @@ namespace SharpBot.Interface
             mouseWatcherForm.Opacity = 1.0;
         }
 
-        private void dsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -200,5 +202,7 @@ namespace SharpBot.Interface
             if(cooldown > 0)
                  cooldown -= tmrKeyHandling.Interval;
         }
+
+
     }
 }

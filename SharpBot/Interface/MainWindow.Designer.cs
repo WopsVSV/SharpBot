@@ -1,4 +1,5 @@
-﻿
+﻿using System.Windows.Forms;
+using Wops;
 
 namespace SharpBot.Interface
 {
@@ -43,8 +44,7 @@ namespace SharpBot.Interface
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOpenMouseWatcher = new System.Windows.Forms.ToolStripMenuItem();
-            this.dsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listScriptsCommands = new System.Windows.Forms.ListView();
+            this.listScriptsCommands = new Wops.ListViewEx();
             this.ch_index = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ch_actionType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ch_Instructions = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -127,7 +127,7 @@ namespace SharpBot.Interface
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.startToolStripMenuItem.Text = "Start (F9)";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
@@ -135,15 +135,14 @@ namespace SharpBot.Interface
             // 
             this.stopToolStripMenuItem.Enabled = false;
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.stopToolStripMenuItem.Text = "Stop (F9)";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemOpenMouseWatcher,
-            this.dsToolStripMenuItem});
+            this.toolStripMenuItemOpenMouseWatcher});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -155,15 +154,10 @@ namespace SharpBot.Interface
             this.toolStripMenuItemOpenMouseWatcher.Text = "Open Mouse Watcher";
             this.toolStripMenuItemOpenMouseWatcher.Click += new System.EventHandler(this.toolStripMenuItemOpenMouseWatcher_Click);
             // 
-            // dsToolStripMenuItem
-            // 
-            this.dsToolStripMenuItem.Name = "dsToolStripMenuItem";
-            this.dsToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.dsToolStripMenuItem.Text = "Test button";
-            this.dsToolStripMenuItem.Click += new System.EventHandler(this.dsToolStripMenuItem_Click);
-            // 
             // listScriptsCommands
             // 
+            this.listScriptsCommands.AllowDrop = true;
+            this.listScriptsCommands.AllowRowReorder = true;
             this.listScriptsCommands.BackgroundImageTiled = true;
             this.listScriptsCommands.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listScriptsCommands.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -314,8 +308,7 @@ namespace SharpBot.Interface
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader ch_done;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenMouseWatcher;
-        private System.Windows.Forms.ToolStripMenuItem dsToolStripMenuItem;
-        public System.Windows.Forms.ListView listScriptsCommands;
         private System.Windows.Forms.Timer tmrKeyHandling;
+        public ListViewEx listScriptsCommands;
     }
 }

@@ -43,6 +43,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\Wops\Downloads\InputSimulator.0.1.0.0-bin\InputSimulator.0.1.0.0-bin\Debug\InputSimulator.dll</HintPath>
     </Reference>
+    <Reference Include="ListViewReorder">
+      <HintPath>..\..\ListViewReorder\ListViewReorder\bin\Debug\ListViewReorder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
