@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  A simple script for Tribal wars to show army and buildings in the popup for allies.
-// @author       Wops & DonVladster
+// @author       You
 // @match        https://ukc1.tribalwars.co.uk/game.php?village=*&screen=map
 // @icon         https://www.google.com/s2/favicons?domain=triburile.ro
 // @grant        none
@@ -68,12 +68,20 @@ document.mycache = [];
         res_html.innerHTML = result;
 
         var dataTable = res_html.getElementsByClassName('vis w100')[0];
-        var dataRow = dataTable.rows[1];
+
+        var rows = dataTable.rows;
+        var dataRow;
+        for(var i = 1; i < rows.length; i++){
+            var villageId = rows[i].cells[0].childNodes[1].href.split("id=")[1];
+            if(villageId === id){
+                dataRow = dataTable.rows[i];
+            }
+        }
 
         var tds = dataRow.querySelectorAll('td');
 
         var units = [];
-        for(var i = 0; i < tds.length; i++){
+        for(i = 0; i < tds.length; i++){
             var unit = tds[i].innerHTML.replace('\n', '').replace(/ /g,'');
 
             if(unit === '?'){
@@ -104,12 +112,20 @@ document.mycache = [];
         res_html.innerHTML = result;
 
         var dataTable = res_html.getElementsByClassName('vis w100')[0];
-        var dataRow = dataTable.rows[1];
+
+        var rows = dataTable.rows;
+        var dataRow;
+        for(var i = 1; i < rows.length; i++){
+            var villageId = rows[i].cells[0].childNodes[1].href.split("id=")[1];
+            if(villageId === id){
+                dataRow = dataTable.rows[i];
+            }
+        }
 
         var tds = dataRow.querySelectorAll('td');
 
         var data = [];
-        for(var i = 0; i < tds.length; i++){
+        for(i = 0; i < tds.length; i++){
             var value = tds[i].innerHTML.replace('\n', '').replace(/ /g,'');
 
             if(value === '?'){
